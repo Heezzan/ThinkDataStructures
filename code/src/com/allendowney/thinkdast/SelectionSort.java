@@ -12,7 +12,7 @@ import java.util.Arrays;
 public class SelectionSort {
 
 	/**
-	 * Swaps the elements at indexes i and j.
+	 * Swaps the elements at indexes i and j. => O(1)
 	 */
 	public static void swapElements(int[] array, int i, int j) {
 		int temp = array[i];
@@ -23,6 +23,7 @@ public class SelectionSort {
 	/**
 	 * Finds the index of the lowest value
 	 * between indices low and high (inclusive).
+	 * => O(n^2)
 	 */
 	public static int indexLowest(int[] array, int start) {
 		int lowIndex = start;

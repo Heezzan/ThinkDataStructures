@@ -61,3 +61,12 @@ to supplementary material.
 
 People who have read *Think Java* or *Head First
 Java* are prepared for this book.
+
+
+---
+
+### 폴더 구성
+- `/code` : 실습용 코드 (Ant 활용)
+- `/solutions` : 해답 코드 (Ant 활용)
+- `/intellij/code` : 실습용 코드
+- `/intellij/solutions` : 해답 코드
