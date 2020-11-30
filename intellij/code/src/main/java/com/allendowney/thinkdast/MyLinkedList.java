@@ -82,7 +82,37 @@ public class MyLinkedList<E> implements List<E> {
 
 	@Override
 	public void add(int index, E element) {
-		//TODO: FILL THIS IN!
+		//DO
+		// 맨 처음에 들어갈 때, 중간에 들어갈 때, 맨 끝에 들어 갈 때 생각해야되는데 이게 맞나...?
+		if (index == 0) {
+			Node tmp = head;
+			head = new Node(element, head);
+			size++;
+		} else {
+			Node node = head;
+			int idx = 0;
+			for (; node.next != null; node = node.next) {
+				if (index == idx+1) {
+					Node tmp = node.next;
+					node.next = new Node(element, tmp);
+					size++;
+				}
+				idx++;
+			}
+			if (index == size) {
+				node.next = new Node(element);
+				size++;
+			}
+		}
+
+		// getNode를 쓰면... 리스트 탐색할 필요 없이 매우 쉬웠다...
+//		if (index == 0) {
+//			head = new Node(element, head);
+//		} else {
+//			Node node = getNode(index-1);
+//			node.next = new Node(element, node.next);
+//		}
+//		size++;
 	}
 
 	@Override
@@ -143,7 +173,28 @@ public class MyLinkedList<E> implements List<E> {
 
 	@Override
 	public int indexOf(Object target) {
-		//TODO: FILL THIS IN!
+		//DO
+		int idx = 0;
+		Node node = head;
+
+		for ( ;; node = node.next) {
+			if (equals(node.data, target))
+				return idx;
+
+			if (node.next == null)
+				break;
+
+			idx++;
+		}
+
+		// for (; node.next != null; node = node.next) 꼭 안써도 되넹...
+//		Node node = head;
+//		for (int i = 0; i < size; i++) {
+//			if (equals(target, node.data)) {
+//				return i;
+//			}
+//			node = node.next;
+//		}
 		return -1;
 	}
 
@@ -152,7 +203,7 @@ public class MyLinkedList<E> implements List<E> {
 	 * Handles the special case that the target is null.
 	 *
 	 * @param target
-	 * @param object
+	 * @param element
 	 */
 	private boolean equals(Object target, Object element) {
 		if (target == null) {
@@ -208,7 +259,36 @@ public class MyLinkedList<E> implements List<E> {
 
 	@Override
 	public E remove(int index) {
-		//TODO: FILL THIS IN!
+		//DO
+		if (index == 0) {
+			Node tmp = head;
+			head = head.next;
+			size--;
+			return tmp.data;
+		} else {
+			Node node = head;
+			int idx = 0;
+			for (; node.next != null; node = node.next) {
+				if (idx == index-1) {
+					Node tmp = node.next;
+					node.next = tmp.next;
+					size--;
+					return tmp.data;
+				}
+			}
+		}
+
+		// get, getNode 쓰면 간단...
+//		E element = get(index);
+//		if (index == 0) {
+//			head = head.next;
+//		} else {
+//			Node node = getNode(index-1);
+//			node.next = node.next.next
+//		}
+//		size--;
+//		return element;
+
 		return null;
 	}
 
